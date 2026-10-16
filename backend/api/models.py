@@ -16,6 +16,20 @@ class Skill(models.Model):
     def __str__(self):
         return f"{self.name} ({self.get_category_display()})"
 
+class Experience(models.Model):
+    company = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
+    date = models.CharField(max_length=100, help_text='e.g., "October 2026" or "2025 - Present"')
+    description = models.TextField()
+    skills = models.ManyToManyField('Skill', blank=True) # Links to your existing Skill model
+    order = models.IntegerField(default=0, help_text="Lower numbers appear first")
+
+    class Meta:
+        ordering = ['order', '-id']
+
+    def __str__(self):
+        return f"{self.role} at {self.company}"    
+
 class Project(models.Model):
     title = models.CharField(max_length=200)
     tagline = models.CharField(max_length=255)

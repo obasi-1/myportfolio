@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Skill, Project
+from .models import Skill, Project, Experience
 
 class SkillSerializer(serializers.ModelSerializer):
     # This will return the readable category name (e.g., "Backend") instead of the short code ("BE")
@@ -8,6 +8,13 @@ class SkillSerializer(serializers.ModelSerializer):
     class Meta:
         model = Skill
         fields = ['id', 'name', 'category', 'category_name']
+
+class ExperienceSerializer(serializers.ModelSerializer):
+    skills = serializers.StringRelatedField(many=True) 
+
+    class Meta:
+        model = Experience
+        fields = ['id', 'company', 'role', 'date', 'description', 'skills', 'order']        
 
 class ProjectSerializer(serializers.ModelSerializer):
     # This nests the Skill details directly inside the project payload, 
