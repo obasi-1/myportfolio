@@ -23,14 +23,40 @@ const TypewriterText = ({ text, delay = 0, speed = 50 }) => {
 };
 
 function App() {
-  const [projects, setProjects] = useState([])
+  const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState('home')
-  const [selectedCert, setSelectedCert] = useState(null)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  
-  // New State for Project Detail View
-  const [selectedProject, setSelectedProject] = useState(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // 1. Refresh-Proof Page State
+  const [page, setPage] = useState(() => {
+    return sessionStorage.getItem('portfolioPage') || 'home';
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem('portfolioPage', page);
+  }, [page]);
+
+  // 2. Refresh-Proof Certificate Modal State
+  const [selectedCert, setSelectedCert] = useState(() => {
+    const saved = sessionStorage.getItem('portfolioCert');
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  useEffect(() => {
+    if (selectedCert) sessionStorage.setItem('portfolioCert', JSON.stringify(selectedCert));
+    else sessionStorage.removeItem('portfolioCert');
+  }, [selectedCert]);
+
+  // 3. Refresh-Proof Detailed Project State
+  const [selectedProject, setSelectedProject] = useState(() => {
+    const saved = sessionStorage.getItem('portfolioProject');
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  useEffect(() => {
+    if (selectedProject) sessionStorage.setItem('portfolioProject', JSON.stringify(selectedProject));
+    else sessionStorage.removeItem('portfolioProject');
+  }, [selectedProject]);
 
   const [theme, setTheme] = useState('dark');
 
