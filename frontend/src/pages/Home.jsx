@@ -93,15 +93,22 @@ const Home = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10">
-                  <button onClick={() => { document.getElementById('projects-grid').scrollIntoView({ behavior: 'smooth' }); }} className="flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition-all w-full sm:w-auto">
-                    View my work
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                  </button>
-                  <Link to="/resume" onClick={() => window.scrollTo(0, 0)} className="flex items-center justify-center gap-2 bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 px-8 py-3.5 rounded-xl font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all w-full sm:w-auto">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                    Resume
-                  </Link>
-                </div>
+  <button onClick={() => { document.getElementById('projects-grid').scrollIntoView({ behavior: 'smooth' }); }} className="flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition-all w-full sm:w-auto">
+    View my work
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+  </button>
+  
+  {/* The new Backend Flex button */}
+  <a href="https://portfolio-backend-dvyu.onrender.com/api/docs/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-3.5 rounded-xl font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all w-full sm:w-auto shadow-md">
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+    API Docs
+  </a>
+
+  <Link to="/resume" onClick={() => window.scrollTo(0, 0)} className="flex items-center justify-center gap-2 bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 px-8 py-3.5 rounded-xl font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all w-full sm:w-auto">
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+    Resume
+  </Link>
+</div>
               </div>
 
               <div className="lg:col-span-5 relative mt-8 lg:mt-0 block w-full max-w-[320px] sm:max-w-md mx-auto lg:max-w-none">
