@@ -4,7 +4,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView # A
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('portfolio.urls')), # (Keep your existing API routes)
+    path('api/', include('api.urls')), # (Keep your existing API routes)
     
     # Add these two lines for the Swagger Docs:
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
