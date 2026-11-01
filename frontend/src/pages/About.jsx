@@ -14,6 +14,14 @@ const About = () => {
 
   const experience = [
     {
+      id: 0, 
+      role: "Full Stack Development Intern",
+      company: "CodeAlpha",
+      date: "2026",
+      description: "Completed an intensive virtual full-stack development internship. Leveraged analytical skills to rapidly adapt to emerging technologies and build robust web applications.",
+      skills: ["Full Stack", "Web Development", "Analytical Skills"]
+    },
+    {
       id: 1, role: "Backend Engineering Specialization", company: "ALX Africa", date: "2025",
       description: "Completed an intensive software engineering program focused on server-side architecture. Architected relational database schemas, developed secure RESTful APIs, and containerized applications for deployment.",
       skills: ["Python", "Django", "PostgreSQL", "REST APIs"]
@@ -33,7 +41,11 @@ const About = () => {
     }
   ];
 
-  const certs = [
+ const certs = [
+    {
+      id: 0, title: "Full Stack Development Virtual Internship", issuer: "CodeAlpha", dateIssued: "October 2026",
+      image: "/codealpha.jpg", skills: ["Full Stack Development", "Adaptability", "Collaboration"], verified: true
+    },
     {
       id: 1, title: "Software Engineering: ProDev Backend", issuer: "ALX Africa", dateIssued: "October 2025",
       image: "/alx-prodev.png", skills: ["Backend Architecture", "Python", "Django", "PostgreSQL"], verified: true
