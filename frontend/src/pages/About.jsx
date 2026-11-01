@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const About = () => {
-  // Bring over the refresh-proof modal state we built earlier
   const [selectedCert, setSelectedCert] = useState(() => {
     const saved = sessionStorage.getItem('portfolioCert');
     return saved ? JSON.parse(saved) : null;
@@ -13,16 +12,7 @@ const About = () => {
     else sessionStorage.removeItem('portfolioCert');
   }, [selectedCert]);
 
-  // Static Data Arrays moved here to keep App.jsx clean
   const experience = [
-    {
-      id: 0, 
-      role: "Full Stack Development Intern",
-      company: "CodeAlpha",
-      date: "2026",
-      description: "Completed an intensive virtual full-stack development internship. Leveraged analytical skills to rapidly adapt to emerging technologies and build robust web applications.",
-      skills: ["Full Stack", "Web Development", "Analytical Skills"]
-    },
     {
       id: 1, role: "Backend Engineering Specialization", company: "ALX Africa", date: "2025",
       description: "Completed an intensive software engineering program focused on server-side architecture. Architected relational database schemas, developed secure RESTful APIs, and containerized applications for deployment.",
@@ -45,10 +35,6 @@ const About = () => {
 
   const certs = [
     {
-      id: 0, title: "Full Stack Development Virtual Internship", issuer: "CodeAlpha", dateIssued: "October 2026",
-      image: "/codealpha.jpg", skills: ["Full Stack Development", "Adaptability", "Collaboration"], verified: true
-    },
-    {
       id: 1, title: "Software Engineering: ProDev Backend", issuer: "ALX Africa", dateIssued: "October 2025",
       image: "/alx-prodev.png", skills: ["Backend Architecture", "Python", "Django", "PostgreSQL"], verified: true
     },
@@ -69,13 +55,28 @@ const About = () => {
           </div>
 
           <div className="w-full md:w-2/3">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">About Me</h1>
-            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
-              I am a backend software engineer and systems architect based in Calabar, Nigeria. With a solid foundation in Chemical Engineering from the University of Calabar, my transition into software engineering was driven by a deep fascination with how complex systems operate—whether they are physical fluid pipelines or data-intensive web architectures.
-            </p>
-            <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
-              Recently, I completed the ALX Software Engineering program specializing in Backend Development. I focus on engineering resilient, scalable APIs and managing relational databases. Bridging quantitative logic with modern web infrastructure allows me to approach backend problems from a highly analytical perspective.
-            </p>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-2">About Me</h1>
+            <p className="text-lg text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider mb-6">Backend Software Engineer</p>
+            
+            <div className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed space-y-4 mb-8">
+              <p>
+                I am a Backend Software Engineer focused on designing and building reliable software systems that solve real-world problems. With a background in Chemical Engineering, I bring an analytical, first-principles approach to problem-solving and system development.
+              </p>
+              <p>
+                Through practical projects like Buildora and my internship experience at Enrollaa, I am continuously developing my ability to build functional, scalable backend solutions.
+              </p>
+              <p>
+                My long-term ambition is to become a highly capable backend engineer working on complex systems and impactful technology solutions.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {['Python', 'Django', 'REST APIs', 'PostgreSQL', 'Systems Thinking', 'Exploring AI Engineering'].map((skill) => (
+                <span key={skill} className="px-3 py-1.5 bg-gray-100 dark:bg-[#111] border border-gray-200 dark:border-gray-800 text-gray-800 dark:text-gray-200 text-[10px] sm:text-xs font-bold rounded-lg shadow-sm">
+                  {skill}
+                </span>
+              ))}
+            </div>
             
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm font-medium text-gray-600 dark:text-gray-500 mb-8">
               <span className="flex items-center gap-2">
@@ -89,7 +90,6 @@ const About = () => {
             </div>
 
             <div className="flex gap-4">
-              {/* USING REACT ROUTER LINK HERE */}
               <Link to="/resume" onClick={() => window.scrollTo(0, 0)} className="flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3.5 rounded-xl font-bold hover:bg-blue-700 transition-colors w-full sm:w-auto">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                 View Resume
@@ -161,7 +161,7 @@ const About = () => {
               <div className="p-6">
                 <h3 className="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-1 leading-tight">{cert.title}</h3>
                 <div className="flex justify-between items-center mt-4">
-                  <p className="text-xs md:text-sm text-gray-500">{cert.issuer} • {cert.dateIssued}</p>
+                  <p className="text-xs md:text-sm text-gray-500">{cert.issuer} {cert.dateIssued}</p>
                   {cert.verified && (
                     <div className="flex items-center text-green-600 dark:text-green-500 text-[10px] md:text-xs font-bold bg-green-50 dark:bg-green-500/10 px-2 py-1 rounded-md border border-green-200 dark:border-green-500/20">
                       <svg className="w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
@@ -175,7 +175,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Certificate Modal Overlay Moved Here */}
       {selectedCert && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 animate-[fadeIn_0.2s_ease-in-out]">
           <div className="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer" onClick={() => setSelectedCert(null)}></div>
