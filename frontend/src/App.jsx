@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
+import Footer from './components/Footer';
 
 // This wrapper handles the smooth fade up/down for every page
 const PageWrapper = ({ children }) => (
@@ -38,11 +39,7 @@ function App() {
         </AnimatePresence>
       </div>
 
-      <footer className="max-w-7xl w-full mx-auto px-6 md:px-8 py-10 md:py-12 border-t border-gray-200 dark:border-gray-800 text-center">
-        <p className="text-gray-500 text-xs md:text-sm font-medium">
-          © {new Date().getFullYear()} Obasi-sam Otei (A Quiet Mind). All rights reserved.
-        </p>
-      </footer>
+     <Footer />
     </div>
   );
 }
