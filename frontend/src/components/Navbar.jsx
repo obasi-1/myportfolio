@@ -29,7 +29,8 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Resume', path: '/resume' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Contact', path: '/contact' },
+    { name: 'My Work', path: '/my-work' }
   ];
 
   const closeMenu = () => setIsMobileMenuOpen(false);

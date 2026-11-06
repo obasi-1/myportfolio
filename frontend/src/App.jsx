@@ -6,6 +6,7 @@ import About from './pages/About';
 import Resume from './pages/Resume';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
+import MyWork from './pages/MyWork';
 
 // This wrapper handles the smooth fade up/down for every page
 const PageWrapper = ({ children }) => (
@@ -35,6 +36,7 @@ function App() {
             <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
             <Route path="/resume" element={<PageWrapper><Resume /></PageWrapper>} />
             <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+            <Route path="/my-work" element={<MyWork />} />
           </Routes>
         </AnimatePresence>
       </div>

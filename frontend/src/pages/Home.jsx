@@ -93,10 +93,14 @@ const Home = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10">
-  <button onClick={() => { document.getElementById('projects-grid').scrollIntoView({ behavior: 'smooth' }); }} className="flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition-all w-full sm:w-auto">
-    View my work
-    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-  </button>
+  <Link 
+  to="/my-work" 
+  onClick={() => window.scrollTo(0, 0)}
+  className="flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-xl font-bold shadow-lg shadow-blue-900/20 hover:bg-blue-700 transition-all w-full sm:w-auto"
+>
+  View my work
+  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+</Link>
   
   {/* The new Backend Flex button */}
   <a href="https://portfolio-backend-dvyu.onrender.com/api/docs/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-8 py-3.5 rounded-xl font-bold hover:bg-gray-800 dark:hover:bg-gray-100 transition-all w-full sm:w-auto shadow-md">
@@ -113,7 +117,7 @@ const Home = () => {
 
               <div className="lg:col-span-5 relative mt-8 lg:mt-0 block w-full max-w-[320px] sm:max-w-md mx-auto lg:max-w-none">
                 <div className="absolute -top-8 md:-top-10 right-0 text-[10px] md:text-xs text-gray-500 dark:text-gray-300 tracking-[0.25em] uppercase font-mono text-right font-semibold">
-                  A Quiet Mind <br/> Obasi-sam Otei
+                 Obasi-sam Otei  <br/> A Quiet Mind
                 </div>
                 <div className="relative rounded-[2rem] overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111] aspect-[4/5] shadow-2xl">
                   <img src="/profile.jpg" alt="Obasi-sam" className="w-full h-full object-cover opacity-90" onError={(e) => e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'} />
