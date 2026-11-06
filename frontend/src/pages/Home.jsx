@@ -115,14 +115,38 @@ const Home = () => {
 </div>
               </div>
 
-              <div className="lg:col-span-5 relative mt-8 lg:mt-0 block w-full max-w-[320px] sm:max-w-md mx-auto lg:max-w-none">
-                <div className="absolute -top-8 md:-top-10 right-0 text-[10px] md:text-xs text-gray-500 dark:text-gray-300 tracking-[0.25em] uppercase font-mono text-right font-semibold">
-                 Obasi-sam Otei  <br/> A Quiet Mind
-                </div>
-                <div className="relative rounded-[2rem] overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111] aspect-[4/5] shadow-2xl">
-                  <img src="/profile.jpg" alt="Obasi-sam" className="w-full h-full object-cover opacity-90" onError={(e) => e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'} />
-                  <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 flex flex-col gap-2">
-                    <span className="bg-white/80 dark:bg-black/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 text-[9px] md:text-[10px] font-black px-3 py-1.5 rounded-lg w-max uppercase tracking-widest shadow-lg">Systems</span>
+              {/* UPDATED: Right side image container */}
+              <div className="lg:col-span-5 relative mt-12 lg:mt-0 flex justify-center items-center w-full">
+                
+                {/* 1. Added smaller max-width, 'group' for hover tracking, and custom animation class */}
+                <div className="relative w-full max-w-[280px] sm:max-w-[320px] animate-[floating_4s_ease-in-out_infinite] group">
+                  
+                  {/* 2. Injected keyframes for the floating animation so no tailwind config is needed */}
+                  <style>{`
+                    @keyframes floating {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-15px); }
+                    }
+                  `}</style>
+                  
+                  <div className="absolute -top-8 md:-top-10 right-0 text-[10px] md:text-xs text-gray-500 dark:text-gray-300 tracking-[0.25em] uppercase font-mono text-right font-semibold z-10">
+                   Obasi-sam Otei  <br/> A Quiet Mind
+                  </div>
+                  
+                  {/* 3. Added group-hover:border-blue-500/50 to the frame */}
+                  <div className="relative rounded-[2rem] overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111] aspect-[4/5] shadow-2xl transition-all duration-500 group-hover:border-blue-500/50 group-hover:shadow-blue-900/20">
+                    
+                    {/* 4. Added group-hover:scale-105 for the smooth zoom in/out effect */}
+<img 
+  src="/profile.jpg" 
+  alt="Obasi-sam" 
+  className="w-full h-full object-cover opacity-90 transition-transform duration-700 ease-in-out group-hover:scale-105" 
+  onError={(e) => e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'} 
+/>
+                    
+                    <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 flex flex-col gap-2">
+                      <span className="bg-white/80 dark:bg-black/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 text-[9px] md:text-[10px] font-black px-3 py-1.5 rounded-lg w-max uppercase tracking-widest shadow-lg">Systems</span>
+                    </div>
                   </div>
                 </div>
               </div>
