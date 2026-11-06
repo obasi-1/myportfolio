@@ -2,21 +2,38 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 const ProjectDetail = () => {
-  const { slug } = useParams(); // Grabs 'buildora' or 'trimly' from the URL
+  const { slug } = useParams();
 
-  // In a real app, you might fetch this from an API or a separate data file.
-  // For now, we define the deep-dive data here.
   const projectDatabase = {
     "buildora": {
       title: "Buildora",
-      role: "Full Stack Engineer",
+      role: "Backend Engineer & Architect",
       status: "Live",
       year: "2026",
       heroImage: "/buildora-preview.png",
       liveLink: "https://build-or-a.tech",
-      overview: "Buildora is a comprehensive learning platform designed to guide students through coding lessons and project submissions.",
+      // The overview now reflects your "biggest recommendation" - showing you as a problem solver and architect.
+      overview: "Buildora is not just a combination of React and Django; it is a complete, end-to-end software product. I identified a gap in project-based learning, designed the application architecture from scratch, built the scalable backend infrastructure, and seamlessly integrated the frontend to deliver a production-ready system.",
       problem: "Traditional learning platforms lack structured, hands-on environments for evaluating complex coding projects and maintaining student accountability.",
       solution: "Architected a Django REST Framework backend with a Neon PostgreSQL database to handle user sessions and project data. Built a responsive React frontend hosted on Vercel to ensure seamless user experience.",
+      features: [
+        "User authentication and secure account management",
+        "Learning path enrollment with structured modules and lessons",
+        "Persistent learning progress tracking and lesson completion functionality",
+        "Project-based learning submission workflows"
+      ],
+      challenges: [
+        "Designing scalable relational database schemas for courses, modules, and multi-state user progress",
+        "Implementing secure REST API endpoints with robust authentication and authorization",
+        "Connecting React state management to Django APIs efficiently",
+        "Handling complex API error states and strict role-based user permissions"
+      ],
+      future: [
+        "Automated code submission and project assessment pipelines",
+        "Instructor dashboards for content management",
+        "Student performance analytics and data visualization",
+        "AI-powered learning assistance integrated into the curriculum"
+      ],
       stack: ["Django", "Django REST Framework", "React", "PostgreSQL", "Tailwind CSS"]
     },
     "trimly": {
@@ -29,6 +46,20 @@ const ProjectDetail = () => {
       overview: "A custom URL shortener and analytics application featuring QR code generation.",
       problem: "Users needed a lightweight, fast, and trackable way to share links locally without relying on heavy enterprise tools.",
       solution: "Engineered a rapid URL shortening algorithm using Django, storing metrics in PostgreSQL, and serving analytics to a clean React dashboard.",
+      features: [
+        "Instant URL shortening and redirection routing",
+        "Automated QR code generation for shortened links",
+        "Basic click tracking and analytics routing"
+      ],
+      challenges: [
+        "Optimizing the shortening algorithm for zero-collision unique hashes",
+        "Ensuring low-latency redirects via efficient database indexing"
+      ],
+      future: [
+        "Geographic and device-based analytics dashboards",
+        "Custom alias generation for branded links",
+        "Expiring links and password-protected routing"
+      ],
       stack: ["Django", "React", "REST APIs", "Vercel", "Render"]
     }
   };
@@ -46,7 +77,6 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen pt-24 pb-20 px-6 md:px-12 max-w-6xl mx-auto animate-[fadeIn_0.5s_ease-in-out] text-gray-300">
       
-      {/* Back Button */}
       <Link to="/my-work" className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-10 transition-colors">
         &larr; Back to My Work
       </Link>
@@ -72,6 +102,57 @@ const ProjectDetail = () => {
             <span className="text-blue-500">⚒</span> How I built it
           </h3>
           <p className="mb-10 leading-relaxed text-gray-400">{project.solution}</p>
+
+          {/* New Section: Key Features */}
+          {project.features && (
+            <>
+              <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="text-blue-500">✦</span> Key Features
+              </h3>
+              <ul className="mb-10 space-y-3 text-gray-400">
+                {project.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-blue-500 mt-1">▹</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {/* New Section: Engineering Challenges */}
+          {project.challenges && (
+            <>
+              <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="text-blue-500">⛭</span> Engineering Challenges
+              </h3>
+              <ul className="mb-10 space-y-3 text-gray-400">
+                {project.challenges.map((challenge, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-blue-500 mt-1">▹</span>
+                    {challenge}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
+          {/* New Section: Future Improvements */}
+          {project.future && (
+            <>
+              <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="text-blue-500">🚀</span> Future Improvements
+              </h3>
+              <ul className="mb-10 space-y-3 text-gray-400">
+                {project.future.map((futureItem, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-gray-600 mt-1">▹</span>
+                    <span className="italic">{futureItem}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
 
         {/* Right Column: Sidebar */}

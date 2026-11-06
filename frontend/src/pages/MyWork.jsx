@@ -5,7 +5,6 @@ const MyWork = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const filters = ['All', 'Full Stack', 'APIs (Backend)', 'Side Projects'];
 
-  // 1. Add 'slug' and 'image' to your projects
   const projects = [
     {
       id: 1,
@@ -58,37 +57,63 @@ const MyWork = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {filteredProjects.map((project) => (
-          // 2. Make the entire card a clickable Link routing to the slug
-          <Link 
-            to={`/my-work/${project.slug}`}
-            key={project.id} 
-            onClick={() => window.scrollTo(0, 0)}
-            className="group block bg-[#111] border border-gray-800 rounded-2xl overflow-hidden hover:border-gray-600 transition-all cursor-pointer"
-          >
-            {/* Image Section */}
-            <div className="h-48 w-full bg-gray-900 border-b border-gray-800 overflow-hidden">
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => { e.target.src = 'https://via.placeholder.com/600x400?text=Preview+Coming+Soon' }} // Fallback if image is missing
-              />
+        {filteredProjects.map((project) => {
+          // Removes 'https://' from the link so it looks clean like 'build-or-a.tech'
+          const displayUrl = project.link.replace(/^https?:\/\//, '');
+
+          return (
+            <div key={project.id} className="bg-[#111] border border-gray-800 rounded-2xl overflow-hidden hover:border-gray-600 transition-all flex flex-col">
+              
+              {/* Image Section - Links to Case Study */}
+              <Link 
+                to={`/my-work/${project.slug}`} 
+                onClick={() => window.scrollTo(0, 0)}
+                className="block h-48 w-full bg-gray-900 border-b border-gray-800 overflow-hidden group cursor-pointer"
+              >
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => { e.target.src = 'https://via.placeholder.com/600x400?text=Preview+Coming+Soon' }} 
+                />
+              </Link>
+              
+              {/* Content Section */}
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="inline-block px-3 py-1 bg-gray-900 text-gray-300 text-xs rounded-full">
+                    {project.category}
+                  </span>
+                  
+                  {/* Top Right Arrow linking to case study */}
+                  <Link to={`/my-work/${project.slug}`} onClick={() => window.scrollTo(0, 0)} className="text-gray-500 hover:text-white transition-colors">
+                    &#x2197;
+                  </Link>
+                </div>
+                
+                {/* Title - Links to Case Study */}
+                <Link to={`/my-work/${project.slug}`} onClick={() => window.scrollTo(0, 0)} className="text-2xl font-bold text-white mb-3 hover:text-blue-500 transition-colors">
+                  {project.title}
+                </Link>
+                
+                <p className="text-gray-400 mb-6 flex-grow">{project.description}</p>
+                
+                {/* External Live Link */}
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-2 text-blue-500 hover:text-blue-400 font-medium transition-colors w-fit"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  {displayUrl}
+                </a>
+              </div>
             </div>
-            
-            {/* Content Section */}
-            <div className="p-8">
-              <span className="inline-block px-3 py-1 bg-gray-900 text-gray-300 text-xs rounded-full mb-4">
-                {project.category}
-              </span>
-              <h2 className="text-2xl font-bold text-white mb-3">{project.title}</h2>
-              <p className="text-gray-400 mb-6">{project.description}</p>
-              <span className="text-blue-500 font-medium group-hover:text-blue-400">
-                View Case Study &rarr;
-              </span>
-            </div>
-          </Link>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
