@@ -10,9 +10,8 @@ const ProjectDetail = () => {
       role: "Backend Engineer & Architect",
       status: "Live",
       year: "2026",
-      heroImage: "/buildora-preview.png",
+      heroImage: "/Buildora.png", // Updated to match your actual image name
       liveLink: "https://build-or-a.tech",
-      // The overview now reflects your "biggest recommendation" - showing you as a problem solver and architect.
       overview: "Buildora is not just a combination of React and Django; it is a complete, end-to-end software product. I identified a gap in project-based learning, designed the application architecture from scratch, built the scalable backend infrastructure, and seamlessly integrated the frontend to deliver a production-ready system.",
       problem: "Traditional learning platforms lack structured, hands-on environments for evaluating complex coding projects and maintaining student accountability.",
       solution: "Architected a Django REST Framework backend with a Neon PostgreSQL database to handle user sessions and project data. Built a responsive React frontend hosted on Vercel to ensure seamless user experience.",
@@ -41,7 +40,7 @@ const ProjectDetail = () => {
       role: "Backend Software Engineer",
       status: "Live",
       year: "2026",
-      heroImage: "/trimly-preview.png",
+      heroImage: "/Trimly.jpg", // Updated to match your actual image name
       liveLink: "https://trimly-ui.vercel.app",
       overview: "A custom URL shortener and analytics application featuring QR code generation.",
       problem: "Users needed a lightweight, fast, and trackable way to share links locally without relying on heavy enterprise tools.",
@@ -74,6 +73,9 @@ const ProjectDetail = () => {
     );
   }
 
+  // Removes 'https://' to create a clean display URL
+  const displayUrl = project.liveLink.replace(/^https?:\/\//, '');
+
   return (
     <div className="min-h-screen pt-24 pb-20 px-6 md:px-12 max-w-6xl mx-auto animate-[fadeIn_0.5s_ease-in-out] text-gray-300">
       
@@ -103,7 +105,7 @@ const ProjectDetail = () => {
           </h3>
           <p className="mb-10 leading-relaxed text-gray-400">{project.solution}</p>
 
-          {/* New Section: Key Features */}
+          {/* Key Features */}
           {project.features && (
             <>
               <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
@@ -120,7 +122,7 @@ const ProjectDetail = () => {
             </>
           )}
 
-          {/* New Section: Engineering Challenges */}
+          {/* Engineering Challenges */}
           {project.challenges && (
             <>
               <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
@@ -137,7 +139,7 @@ const ProjectDetail = () => {
             </>
           )}
 
-          {/* New Section: Future Improvements */}
+          {/* Future Improvements */}
           {project.future && (
             <>
               <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
@@ -172,9 +174,12 @@ const ProjectDetail = () => {
             href={project.liveLink} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors"
+            className="flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-colors"
           >
-            Visit Live Site &#x2197;
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            {displayUrl}
           </a>
 
           <div className="bg-[#111] border border-gray-800 p-6 rounded-2xl">
