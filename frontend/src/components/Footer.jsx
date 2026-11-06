@@ -10,8 +10,8 @@ const Footer = () => {
           {/* Column 1: Brand & Socials */}
           <div className="md:col-span-12 lg:col-span-5">
             <Link to="/" onClick={() => window.scrollTo(0, 0)} className="inline-block mb-4">
-              <span className="text-xl font-black text-gray-900 dark:text-white tracking-tight">A Quiet Mind</span>
-              <span className="block text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-0.5">Obasi-sam Otei</span>
+              <span className="text-xl font-black text-gray-900 dark:text-white tracking-tight">Obasi-sam Otei</span>
+              <span className="block text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-0.5">A Quiet Mind</span>
             </Link>
             <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 max-w-sm">
               Backend Software Engineer. Python · Django · PostgreSQL · React. Systems Thinking · Exploring AI Engineering . Building systems that scale and bridging quantitative logic with modern web infrastructure.
