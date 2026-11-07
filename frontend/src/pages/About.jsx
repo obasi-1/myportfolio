@@ -15,6 +15,14 @@ const About = () => {
   const experience = [
     {
       id: 0, 
+      role: "Backend Engineering Intern",
+      company: "Enrollaa",
+      date: "2026 - Present",
+      description: "Developing robust server-side architecture and optimizing API integrations. Applying first-principles problem solving to ensure data integrity and seamless backend functionality.",
+      skills: ["Backend Architecture", "API Development", "Python", "Django"]
+    },
+    {
+      id: 1, 
       role: "Full Stack Development Intern",
       company: "CodeAlpha",
       date: "2026",
@@ -22,12 +30,12 @@ const About = () => {
       skills: ["Full Stack", "Web Development", "Analytical Skills"]
     },
     {
-      id: 1, role: "Backend Engineering Specialization", company: "ALX Africa", date: "2025",
-      description: "Completed an intensive software engineering program focused on server-side architecture. Architected relational database schemas, developed secure RESTful APIs, and containerized applications for deployment.",
+      id: 2, role: "Backend Engineering Specialization", company: "ALX Africa", date: "June 2025 - Oct 2025",
+      description: "Graduated from an intensive 4-month software engineering program focused on server-side architecture. Architected relational database schemas, developed secure RESTful APIs, and containerized applications for deployment.",
       skills: ["Python", "Django", "PostgreSQL", "REST APIs"]
     },
     {
-      id: 2, role: "Industrial Process Trainee", company: "Marian Table Water", date: "2025",
+      id: 3, role: "Industrial Process Trainee", company: "Marian Table Water", date: "2025",
       description: "Analyzed and documented the complete industrial fluid purification and production workflow. Bridged theoretical chemical engineering concepts with real-world physical systems and quality control.",
       skills: ["Process Flow", "Technical Documentation", "Industrial Systems"]
     }
@@ -35,13 +43,13 @@ const About = () => {
 
   const education = [
     {
-      id: 1, degree: "B.Eng in Chemical Engineering", school: "University of Calabar", date: "In Progress",
-      description: "Studying core engineering principles, unit operations, and thermodynamics. Utilizing simulation tools like UniSim to model complex industrial reactors, heat exchangers, and physical data flows.",
-      skills: ["Process Simulation", "Quantitative Analysis", "System Modeling"]
+      id: 1, degree: "B.Eng in Chemical Engineering", school: "University of Calabar (UNICAL)", date: "In Progress",
+      description: "Studying core engineering principles, unit operations, and thermodynamics. Utilizing analytical thinking and simulation tools (UniSim) to model complex physical data flows—a methodology that directly translates to efficient backend software architecture.",
+      skills: ["Process Simulation", "Quantitative Analysis", "First-Principles Logic"]
     }
   ];
 
- const certs = [
+  const certs = [
     {
       id: 0, title: "Full Stack Development Virtual Internship", issuer: "CodeAlpha", dateIssued: "October 2026",
       image: "/codealpha.jpg", skills: ["Full Stack Development", "Adaptability", "Collaboration"], verified: true
@@ -60,13 +68,29 @@ const About = () => {
     <div className="animate-[fadeIn_0.5s_ease-in-out]">
       <section className="max-w-5xl mx-auto px-6 md:px-8 pt-12 md:pt-20 pb-10">
         <div className="flex flex-col md:flex-row gap-10 md:gap-12 items-start">
-          <div className="w-full md:w-1/3 max-w-[320px] mx-auto md:max-w-none">
-            <div className="relative rounded-[2rem] overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111] aspect-[4/5] shadow-2xl">
-              <img src="/profile.jpg" alt="Obasi-sam" className="w-full h-full object-cover opacity-90" onError={(e) => e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'} />
+          
+          {/* Apply identical interactive animations to the About image */}
+          <div className="w-full md:w-1/3 max-w-[280px] sm:max-w-[320px] mx-auto md:max-w-none animate-[floating_4s_ease-in-out_infinite] group">
+            <style>{`
+              @keyframes floating {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-15px); }
+              }
+            `}</style>
+            <div className="relative rounded-[2rem] overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111] aspect-[4/5] shadow-2xl transition-all duration-500 group-hover:border-blue-500/50 group-hover:shadow-blue-900/20">
+              <img 
+                src="/profile.jpg" 
+                alt="Obasi-sam" 
+                className="w-full h-full object-cover opacity-90 transition-transform duration-700 ease-in-out group-hover:scale-105" 
+                onError={(e) => e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'} 
+              />
+              <div className="absolute bottom-4 md:bottom-6 left-4 md:left-6 flex flex-col gap-2">
+                <span className="bg-white/80 dark:bg-black/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400 text-[9px] md:text-[10px] font-black px-3 py-1.5 rounded-lg w-max uppercase tracking-widest shadow-lg">Systems</span>
+              </div>
             </div>
           </div>
 
-          <div className="w-full md:w-2/3">
+          <div className="w-full md:w-2/3 mt-6 md:mt-0">
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-2">About Me</h1>
             <p className="text-lg text-blue-600 dark:text-blue-400 font-bold uppercase tracking-wider mb-6">Backend Software Engineer</p>
             
@@ -75,15 +99,15 @@ const About = () => {
                 I am a Backend Software Engineer focused on designing and building reliable software systems that solve real-world problems. With a background in Chemical Engineering, I bring an analytical, first-principles approach to problem-solving and system development.
               </p>
               <p>
-                Through practical projects like Buildora and my internship experience at Enrollaa, I am continuously developing my ability to build functional, scalable backend solutions.
+                Through practical projects like Buildora and my backend engineering internship at Enrollaa, I am continuously developing my ability to build functional, scalable server-side solutions.
               </p>
               <p>
-                My long-term ambition is to become a highly capable backend engineer working on complex systems and impactful technology solutions.
+                My long-term ambition is to become a highly capable backend systems architect working on complex data structures and impactful technology solutions.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-2 mb-8">
-              {['Python', 'Django', 'REST APIs', 'PostgreSQL', 'Systems Thinking', 'Exploring AI Engineering'].map((skill) => (
+              {['Python', 'Django', 'REST APIs', 'PostgreSQL', 'Systems Thinking', 'Data Modeling'].map((skill) => (
                 <span key={skill} className="px-3 py-1.5 bg-gray-100 dark:bg-[#111] border border-gray-200 dark:border-gray-800 text-gray-800 dark:text-gray-200 text-[10px] sm:text-xs font-bold rounded-lg shadow-sm">
                   {skill}
                 </span>
@@ -102,7 +126,7 @@ const About = () => {
             </div>
 
             <div className="flex gap-4">
-              <Link to="/resume" onClick={() => window.scrollTo(0, 0)} className="flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3.5 rounded-xl font-bold hover:bg-blue-700 transition-colors w-full sm:w-auto">
+              <Link to="/resume" onClick={() => window.scrollTo(0, 0)} className="flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3.5 rounded-xl font-bold hover:bg-blue-700 transition-colors w-full sm:w-auto shadow-lg shadow-blue-900/20">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                 View Resume
               </Link>
