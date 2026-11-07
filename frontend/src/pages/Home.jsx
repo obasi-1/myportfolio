@@ -241,7 +241,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* PHASE 3: Featured Projects Section (Cleanly routes to Case Studies) */}
+      {/* PHASE 3: Featured Projects Section (Uniform Grid Layout) */}
       <section id="projects-grid" className="max-w-7xl mx-auto px-6 md:px-8 mt-20 md:mt-24 border-t border-gray-200 dark:border-gray-800 pt-16 md:pt-20 pb-20">
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
@@ -254,59 +254,57 @@ const Home = () => {
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, index) => {
-            // Make Buildora span the full width to act as a massive Flagship project
-            const isFlagship = index === 0;
-            
-            return (
-              <Link 
-                key={project.id} 
-                to={`/my-work/${project.slug}`}
-                onClick={() => window.scrollTo(0, 0)}
-                className={`group bg-gray-50 dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 flex flex-col shadow-sm ${isFlagship ? 'md:col-span-2 md:flex-row' : ''}`}
-              >
-                <div className={`bg-gray-100 dark:bg-[#1a1a1a] relative overflow-hidden border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-800 ${isFlagship ? 'md:w-1/2 min-h-[300px]' : 'h-56'}`}>
-                  <div className="absolute top-6 left-6 z-10">
-                    <span className="bg-gray-900 text-white text-[10px] font-bold px-3 py-1.5 rounded-full shadow-lg">
-                      {project.live_demo_url ? 'Live Application' : 'Backend Repo'}
-                    </span>
-                  </div>
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700 ease-in-out" 
-                    onError={(e) => { e.target.src = 'https://via.placeholder.com/600x400?text=Preview+Coming+Soon' }}
-                  />
-                </div>
-                
-                <div className={`p-8 md:p-10 flex flex-col flex-grow ${isFlagship ? 'md:w-1/2 justify-center' : ''}`}>
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className={`font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors ${isFlagship ? 'text-3xl' : 'text-2xl'}`}>
-                      {project.title}
-                    </h3>
-                    <span className="text-gray-400 group-hover:text-blue-500 transition-colors text-xl">&#x2197;</span>
-                  </div>
-                  
-                  <p className="text-[11px] text-gray-500 font-bold uppercase tracking-widest mb-4">
-                    Backend Software Engineer
-                  </p>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 flex-grow">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {renderTechStack(project.tagline)}
-                  </div>
-
-                  <span className="text-blue-600 font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Read Case Study &rarr;
+        {/* Reverted to the standard 3-column grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <Link 
+              key={project.id} 
+              to={`/my-work/${project.slug}`}
+              onClick={() => window.scrollTo(0, 0)}
+              className="group bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 rounded-3xl overflow-hidden hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 flex flex-col shadow-sm dark:shadow-none"
+            >
+              <div className="h-48 bg-gray-100 dark:bg-[#1a1a1a] p-6 relative flex flex-col justify-between overflow-hidden border-b border-gray-200 dark:border-gray-800">
+                <div className="flex justify-between items-start z-10 relative">
+                  <span className="bg-gray-900 text-white text-[10px] font-bold px-3 py-1 rounded-full">
+                    {project.live_demo_url ? 'Live' : 'Backend Repo'}
                   </span>
                 </div>
-              </Link>
-            );
-          })}
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" 
+                  onError={(e) => { e.target.src = 'https://via.placeholder.com/600x400?text=Preview+Coming+Soon' }}
+                />
+              </div>
+              
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-500 transition-colors">
+                    {project.title}
+                  </h3>
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+                
+                <p className="text-[11px] text-gray-500 font-medium mb-4">
+                  Backend Software Engineer • {new Date().getFullYear()}
+                </p>
+                
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6 line-clamp-3 flex-grow">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {renderTechStack(project.tagline)}
+                </div>
+
+                <span className="mt-auto text-xs font-medium text-blue-600 dark:text-blue-500 flex items-center gap-1">
+                  Read Case Study &rarr;
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </div>
